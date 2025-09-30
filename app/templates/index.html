@@ -1,137 +1,326 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Decidr - Stop Debating. Start Deciding.</title>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Decidr – Make Group Decisions Instantly</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              primary: "#2256ff",
+              "primary-light": "#e6eeff",
+              "primary-dark": "#1a3fa3",
+            },
+            fontFamily: {
+              sans: ["Inter", "system-ui", "sans-serif"],
+            },
+          },
+        },
+      };
+    </script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
     <style>
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-        .fade-in-up {
-            animation: fadeInUp 0.6s ease-out;
-        }
+      body {
+        font-family: "Inter", system-ui, sans-serif;
+      }
+      .shadow-saas {
+        box-shadow: 0 8px 32px 0 rgba(34, 86, 255, 0.1),
+          0 1.5px 4px 0 rgba(34, 86, 255, 0.06);
+      }
+      .glass {
+        background: rgba(255, 255, 255, 0.92);
+        backdrop-filter: blur(14px);
+      }
+      .cta-hero {
+        background: linear-gradient(120deg, #2256ff 0%, #e6eeff 100%);
+        color: #fff;
+        box-shadow: 0 8px 32px 0 rgba(34, 86, 255, 0.1);
+      }
+      .cta-hero .cta-btn {
+        background: #fff;
+        color: #2256ff;
+        font-weight: 700;
+        border-radius: 1rem;
+        box-shadow: 0 2px 12px 0 rgba(34, 86, 255, 0.1);
+        transition: background 0.2s, color 0.2s, transform 0.2s;
+      }
+      .cta-hero .cta-btn:hover {
+        background: #2256ff;
+        color: #fff;
+        transform: scale(1.04);
+      }
+      .feature-icon {
+        transition: transform 0.2s;
+      }
+      .glass:hover .feature-icon {
+        transform: scale(1.12) rotate(-6deg);
+      }
     </style>
-</head>
-<body class="bg-gradient-to-br from-blue-50 to-indigo-100 min-h-screen">
+  </head>
+  <body class="bg-gradient-to-br from-primary-light to-white min-h-screen">
     <!-- Navigation -->
-    <nav class="bg-white shadow-sm">
-        <div class="max-w-6xl mx-auto px-4 py-4 flex items-center justify-between">
-            <div class="flex items-center space-x-2">
-                <div class="w-8 h-8 bg-indigo-600 rounded-lg flex items-center justify-center">
-                    <span class="text-white font-bold text-xl">D</span>
-                </div>
-                <span class="text-2xl font-bold text-gray-800">Decidr</span>
-            </div>
-            <a href="create.html" class="bg-indigo-600 text-white px-6 py-2 rounded-lg hover:bg-indigo-700 transition">
-                Create Poll
-            </a>
-        </div>
+    <nav class="bg-white/90 shadow-saas sticky top-0 z-30">
+      <div
+        class="max-w-6xl mx-auto px-4 py-4 flex items-center justify-between"
+      >
+        <a href="index.html" class="flex items-center space-x-3">
+          <img
+            src="logo-full.png"
+            alt="Decidr Logo"
+            class="h-10 w-auto hidden sm:block"
+            style="max-width: 160px"
+          />
+          <span class="text-2xl font-bold text-primary sm:hidden">Decidr</span>
+        </a>
+        <a
+          href="create.html"
+          class="bg-primary text-white px-7 py-3 rounded-xl font-semibold shadow hover:bg-primary-dark transition text-lg"
+        >
+          Create Poll
+        </a>
+      </div>
     </nav>
 
     <!-- Hero Section -->
-    <section class="max-w-6xl mx-auto px-4 py-16 text-center fade-in-up">
-        <h1 class="text-5xl md:text-6xl font-bold text-gray-900 mb-6">
-            Stop Debating.<br>Start Deciding.
+    <section class="max-w-5xl mx-auto px-4 py-24 text-center">
+      <div
+        class="cta-hero rounded-3xl shadow-saas p-12 md:p-20 flex flex-col items-center relative overflow-hidden"
+      >
+        <img
+          src="logo-full.png"
+          alt="Decidr Logo"
+          class="h-14 w-auto mb-8 mx-auto drop-shadow-xl"
+          style="max-width: 220px"
+        />
+        <h1
+          class="text-5xl md:text-6xl font-extrabold mb-6 tracking-tight leading-tight drop-shadow-lg"
+        >
+          Make Group Decisions Instantly
         </h1>
-        <p class="text-xl text-gray-600 mb-8 max-w-2xl mx-auto">
-            Create instant polls with smart consensus-finding. Share a link, get votes, make decisions—no signup required.
+        <p class="text-xl mb-10 max-w-2xl mx-auto opacity-90">
+          Decidr is the fastest way to create polls, collect votes, and find
+          consensus. No signups, no hassle—just share a link and decide
+          together.
         </p>
-        <a href="create.html" class="inline-block bg-indigo-600 text-white px-8 py-4 rounded-xl text-lg font-semibold hover:bg-indigo-700 transition transform hover:scale-105">
-            Create Your First Poll
+        <a href="create.html" class="cta-btn px-10 py-5 text-xl font-bold mt-2">
+          Create Your First Poll
         </a>
+        <div
+          class="absolute -top-10 -right-10 w-40 h-40 bg-white/10 rounded-full blur-2xl"
+        ></div>
+        <div
+          class="absolute -bottom-10 -left-10 w-40 h-40 bg-white/10 rounded-full blur-2xl"
+        ></div>
+      </div>
     </section>
 
     <!-- Features Section -->
     <section class="max-w-6xl mx-auto px-4 py-16">
-        <div class="grid md:grid-cols-3 gap-8">
-            <!-- Feature 1 -->
-            <div class="bg-white rounded-xl p-8 shadow-lg hover:shadow-xl transition">
-                <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mb-4">
-                    <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
-                    </svg>
-                </div>
-                <h3 class="text-xl font-bold text-gray-900 mb-2">Lightning Fast</h3>
-                <p class="text-gray-600">Create polls in seconds. Share instantly. Get results in real-time.</p>
-            </div>
-
-            <!-- Feature 2 -->
-            <div class="bg-white rounded-xl p-8 shadow-lg hover:shadow-xl transition">
-                <div class="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center mb-4">
-                    <svg class="w-6 h-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"></path>
-                    </svg>
-                </div>
-                <h3 class="text-xl font-bold text-gray-900 mb-2">Zero Friction</h3>
-                <p class="text-gray-600">No signups. No downloads. Just click and vote. It's that simple.</p>
-            </div>
-
-            <!-- Feature 3 -->
-            <div class="bg-white rounded-xl p-8 shadow-lg hover:shadow-xl transition">
-                <div class="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center mb-4">
-                    <svg class="w-6 h-6 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path>
-                    </svg>
-                </div>
-                <h3 class="text-xl font-bold text-gray-900 mb-2">Smart Consensus</h3>
-                <p class="text-gray-600">Ranked choice voting finds what your group actually wants.</p>
-            </div>
+      <div class="grid md:grid-cols-3 gap-8">
+        <!-- Feature 1 -->
+        <div
+          class="glass rounded-2xl p-10 shadow-saas hover:shadow-xl transition border border-primary/10"
+        >
+          <div
+            class="w-14 h-14 bg-primary/10 rounded-lg flex items-center justify-center mb-5 feature-icon"
+          >
+            <svg
+              class="w-7 h-7 text-primary"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M13 10V3L4 14h7v7l9-11h-7z"
+              ></path>
+            </svg>
+          </div>
+          <h3 class="text-xl font-bold text-gray-900 mb-2">Lightning Fast</h3>
+          <p class="text-gray-500">
+            Create polls in seconds. Share instantly. Get results in real-time.
+          </p>
         </div>
+        <!-- Feature 2 -->
+        <div
+          class="glass rounded-2xl p-10 shadow-saas hover:shadow-xl transition border border-primary/10"
+        >
+          <div
+            class="w-14 h-14 bg-primary/10 rounded-lg flex items-center justify-center mb-5 feature-icon"
+          >
+            <svg
+              class="w-7 h-7 text-green-500"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"
+              ></path>
+            </svg>
+          </div>
+          <h3 class="text-xl font-bold text-gray-900 mb-2">Zero Friction</h3>
+          <p class="text-gray-500">
+            No signups. No downloads. Just click and vote. It's that simple.
+          </p>
+        </div>
+        <!-- Feature 3 -->
+        <div
+          class="glass rounded-2xl p-10 shadow-saas hover:shadow-xl transition border border-primary/10"
+        >
+          <div
+            class="w-14 h-14 bg-primary/10 rounded-lg flex items-center justify-center mb-5 feature-icon"
+          >
+            <svg
+              class="w-7 h-7 text-purple-500"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"
+              ></path>
+            </svg>
+          </div>
+          <h3 class="text-xl font-bold text-gray-900 mb-2">Smart Consensus</h3>
+          <p class="text-gray-500">
+            Ranked choice voting finds what your group actually wants.
+          </p>
+        </div>
+      </div>
     </section>
 
     <!-- How It Works -->
     <section class="max-w-4xl mx-auto px-4 py-16">
-        <h2 class="text-3xl font-bold text-gray-900 text-center mb-12">How It Works</h2>
-        <div class="space-y-8">
-            <div class="flex items-start space-x-4">
-                <div class="flex-shrink-0 w-10 h-10 bg-indigo-600 text-white rounded-full flex items-center justify-center font-bold">1</div>
-                <div>
-                    <h3 class="text-xl font-semibold text-gray-900 mb-2">Create Your Poll</h3>
-                    <p class="text-gray-600">Choose between simple voting or ranked choice. Add your question and options.</p>
-                </div>
-            </div>
-            <div class="flex items-start space-x-4">
-                <div class="flex-shrink-0 w-10 h-10 bg-indigo-600 text-white rounded-full flex items-center justify-center font-bold">2</div>
-                <div>
-                    <h3 class="text-xl font-semibold text-gray-900 mb-2">Share the Link</h3>
-                    <p class="text-gray-600">Get an instant shareable link. Send it via text, email, or social media.</p>
-                </div>
-            </div>
-            <div class="flex items-start space-x-4">
-                <div class="flex-shrink-0 w-10 h-10 bg-indigo-600 text-white rounded-full flex items-center justify-center font-bold">3</div>
-                <div>
-                    <h3 class="text-xl font-semibold text-gray-900 mb-2">Watch Results Roll In</h3>
-                    <p class="text-gray-600">See live results as people vote. Our algorithm finds the best consensus.</p>
-                </div>
-            </div>
+      <h2 class="text-3xl font-bold text-gray-900 text-center mb-12">
+        How It Works
+      </h2>
+      <div class="space-y-10">
+        <div class="flex items-start space-x-5">
+          <div
+            class="flex-shrink-0 w-12 h-12 bg-primary text-white rounded-full flex items-center justify-center font-bold text-lg shadow"
+          >
+            1
+          </div>
+          <div>
+            <h3 class="text-xl font-semibold text-gray-900 mb-2">
+              Create Your Poll
+            </h3>
+            <p class="text-gray-500">
+              Choose between simple voting or ranked choice. Add your question
+              and options.
+            </p>
+          </div>
         </div>
+        <div class="flex items-start space-x-5">
+          <div
+            class="flex-shrink-0 w-12 h-12 bg-primary text-white rounded-full flex items-center justify-center font-bold text-lg shadow"
+          >
+            2
+          </div>
+          <div>
+            <h3 class="text-xl font-semibold text-gray-900 mb-2">
+              Share the Link
+            </h3>
+            <p class="text-gray-500">
+              Get an instant shareable link. Send it via text, email, or social
+              media.
+            </p>
+          </div>
+        </div>
+        <div class="flex items-start space-x-5">
+          <div
+            class="flex-shrink-0 w-12 h-12 bg-primary text-white rounded-full flex items-center justify-center font-bold text-lg shadow"
+          >
+            3
+          </div>
+          <div>
+            <h3 class="text-xl font-semibold text-gray-900 mb-2">
+              Watch Results Roll In
+            </h3>
+            <p class="text-gray-500">
+              See live results as people vote. Our algorithm finds the best
+              consensus.
+            </p>
+          </div>
+        </div>
+      </div>
     </section>
 
     <!-- CTA Section -->
-    <section class="max-w-4xl mx-auto px-4 py-16 text-center">
-        <div class="bg-indigo-600 rounded-2xl p-12 text-white">
-            <h2 class="text-3xl font-bold mb-4">Ready to Make Better Decisions?</h2>
-            <p class="text-xl mb-8 opacity-90">Join thousands making group decisions the smart way.</p>
-            <a href="create.html" class="inline-block bg-white text-indigo-600 px-8 py-4 rounded-xl text-lg font-semibold hover:bg-gray-100 transition">
-                Create Your Poll Now
-            </a>
-        </div>
+    <section class="max-w-4xl mx-auto px-4 py-20 text-center">
+      <div class="glass rounded-2xl p-14 shadow-saas border border-primary/10">
+        <h2 class="text-3xl font-bold mb-4 text-gray-900">
+          Ready to Make Better Decisions?
+        </h2>
+        <p class="text-xl mb-8 text-gray-500">
+          Join thousands making group decisions the smart way.
+        </p>
+        <a
+          href="create.html"
+          class="inline-block bg-primary text-white px-10 py-5 rounded-2xl text-xl font-bold shadow hover:bg-primary-dark transition"
+        >
+          Create Your Poll Now
+        </a>
+      </div>
     </section>
 
     <!-- Footer -->
-    <footer class="bg-white mt-16">
-        <div class="max-w-6xl mx-auto px-4 py-8 text-center text-gray-600">
-            <p>&copy; 2025 Decidr. Making group decisions simple.</p>
-        </div>
+    <footer class="bg-white/90 mt-16 shadow-saas">
+      <div
+        class="max-w-6xl mx-auto px-4 py-8 text-center text-gray-400 text-sm"
+      >
+        <p>&copy; 2025 Decidr. Making group decisions simple.</p>
+      </div>
     </footer>
-</body>
-  </html>
+    <script>
+      // GSAP Animations
+      document.addEventListener("DOMContentLoaded", () => {
+        gsap.from("nav", {
+          y: -40,
+          opacity: 0,
+          duration: 0.7,
+          ease: "power2.out",
+        });
+        gsap.from(".cta-hero", {
+          scale: 0.98,
+          opacity: 0,
+          duration: 0.8,
+          delay: 0.1,
+          ease: "power2.out",
+        });
+        gsap.from("section:not(.cta-hero)", {
+          y: 40,
+          opacity: 0,
+          duration: 0.8,
+          delay: 0.2,
+          ease: "power2.out",
+          stagger: 0.2,
+        });
+        gsap.from(".feature-icon", {
+          y: 30,
+          opacity: 0,
+          duration: 0.7,
+          stagger: 0.1,
+          delay: 0.3,
+          ease: "power2.out",
+        });
+      });
+    </script>
+  </body>
+</html>
