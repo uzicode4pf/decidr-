@@ -45,7 +45,7 @@
       <div
         class="max-w-6xl mx-auto px-4 py-4 flex items-center justify-between"
       >
-        <a href="index.html" class="flex items-center space-x-3">
+        <a href="/" class="flex items-center space-x-3">
           <img
             src="/static/logo-full.png"
             alt="Decidr Logo"
@@ -461,11 +461,11 @@
             throw new Error(`HTTP error! status: ${response.status}`);
           const data = await response.json();
 
-          const pollUrl = `${window.location.origin}/vote.html?id=${data.id}`;
+          const pollUrl = `${window.location.origin}/vote?id=${data.id}`;
           document.getElementById("pollLink").textContent = pollUrl;
           document.getElementById(
             "viewPollBtn"
-          ).href = `vote.html?id=${data.id}`;
+          ).href = `/vote?id=${data.id}`;
           modal.classList.remove("hidden");
         } catch (error) {
           console.error("Error:", error);

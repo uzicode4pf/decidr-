@@ -57,7 +57,7 @@
       <div
         class="max-w-6xl mx-auto px-4 py-4 flex items-center justify-between"
       >
-        <a href="index.html" class="flex items-center space-x-3">
+        <a href="/" class="flex items-center space-x-3">
           <img
             src="/static/logo-full.png"
             alt="Decidr Logo"
@@ -250,7 +250,7 @@
           This poll doesn't exist or has been deleted
         </p>
         <a
-          href="index.html"
+          href="/"
           class="inline-block bg-primary text-white px-8 py-3 rounded-xl font-semibold hover:bg-primary-dark transition"
         >
           Go Home
@@ -510,7 +510,7 @@
             createConfetti();
 
             // Update links
-            const resultsUrl = `results.html?id=${pollId}`;
+            const resultsUrl = `/results?id=${pollId}`;
             document.getElementById("modalViewResultsBtn").href = resultsUrl;
             document
               .querySelectorAll("#resultsLink a, #viewResultsBtn")
@@ -529,9 +529,9 @@
       document.getElementById("closeModalBtn").addEventListener("click", () => {
         successModal.classList.add("hidden");
         if (pollData.settings.show_results) {
-          window.location.href = `results.html?id=${pollId}`;
+          window.location.href = `/results?id=${pollId}`;
         } else {
-          window.location.href = "index.html";
+          window.location.href = "/";
         }
       });
 
@@ -539,7 +539,7 @@
       function showAlreadyVoted() {
         loadingState.classList.add("hidden");
         alreadyVoted.classList.remove("hidden");
-        const resultsUrl = `results.html?id=${pollId}`;
+        const resultsUrl = `/results?id=${pollId}`;
         document.getElementById("viewResultsBtn").href = resultsUrl;
       }
 
